@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use App\Models\Post;
+use App\Models\Technology;
 use App\Models\Type;
 use Illuminate\Support\Str;
 
@@ -34,9 +35,12 @@ class PostController extends Controller
     
     {
 
+//  get all types
         $types = Type::all();
-        //
-        return view('admin.posts.create', compact('types'));
+        //  get all technologies
+        $technologies = Technology::all();
+        
+        return view('admin.posts.create', compact('types', 'technologies'));
     }
 
     /**
@@ -51,20 +55,26 @@ class PostController extends Controller
 
         $data = $request->validated();
 
+
+
         $post = new Post();
         
         
         
         $post->title = $data['title'];
          $post->content = $data['content'];
-         
-         
-         
-    //    
           $post->slug = Str::of($post->title)->slug('-');
+
+       
 
           $post->save();
 
+
+          if (isset($data['technologies'])){
+               $post->technologies()->sync($data['technologies']);
+
+          }
+       
 
 
           return redirect()->route('admin.posts.index')->with('message',"Post $post->title creato correttamente");

@@ -36,6 +36,7 @@
     <label for="exampleInputPassword1" class="form-label">Contenuto</label>
     <textarea type="text"  class="form-control" name="content"value="{{old('content')}}" ></textarea> </textarea>
   </div>
+  
 
  <div class="mb-3">
   <label for="">Tipo </label>
@@ -46,6 +47,25 @@
  @endforeach
 
 </select>
+</div>
+
+
+
+<div class="mb-3">
+  <div>
+  <label class="from-label">Technologies</label>
+  </div>
+
+
+  @foreach ($technologies as $technology)
+        <div class="form-check form-check-inline">
+  <input class="form-check-input" type="checkbox" value="{{$technology->id}}" name="technologies[]" id="{{$technology->id}}">
+  <label class="form-check-label"  for="tag-{{$technology->id}}" >{{$technology->title}}</label>
+</div>
+  @endforeach
+
+
+
 </div>
    
   <button type="submit" class="btn btn-primary">Submit</button>

@@ -9,6 +9,8 @@ class Post extends Model
 {
     use HasFactory;
 
+    protected $guarded = ['slug','technologies'];
+
     public function type()
     {
         return 

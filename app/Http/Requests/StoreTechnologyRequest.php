@@ -4,14 +4,14 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StorePostRequest extends FormRequest
+class StoreTechnologyRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return true;
+        return false;
     }
 
     /**
@@ -23,10 +23,6 @@ class StorePostRequest extends FormRequest
     {
         return [
             //
-            'title' => ['required','unique:posts,title','max:47','string'],
-            'content' => ['nullable', 'max:500'],
-            'type_id' => ['nullable', 'exists:types,id'],
-             'technologies' => ['nullable', 'exists:technologies,id'],
         ];
     }
 }
