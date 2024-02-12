@@ -56,11 +56,15 @@
   <label class="from-label">Technologies</label>
   </div>
 
+{{-- 
+  @if( $errors->any())
+@dd(old('technologies'))
+  @endif --}}
 
   @foreach ($technologies as $technology)
         <div class="form-check form-check-inline">
   <input class="form-check-input" type="checkbox" value="{{$technology->id}}" name="technologies[]" id="{{$technology->id}}">
-  <label class="form-check-label"  for="tag-{{$technology->id}}" >{{$technology->title}}</label>
+  <label class="form-check-label"  for="tag-{{$technology->id}}" {{in_array($technology->id, old('technologies' , [])) ? 'checked' : ''}} >{{$technology->title}}</label>
 </div>
   @endforeach
 
