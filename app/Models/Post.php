@@ -15,5 +15,12 @@ class Post extends Model
         $this->belongsTo(Type::class);
     }
 
+
+    public function technologies()
+    {
+        return 
+        $this->belongsToMany(Technology::class);
+    }
+
     
 }
