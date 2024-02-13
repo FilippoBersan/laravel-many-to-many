@@ -54,25 +54,25 @@ class PostController extends Controller
 
 
 
-        $post = new Post();
+        $new_post = new Post();
 
         //  $post->title = $data['title'];
         //  $post->content = $data['content'];
-        $post->fill($data);
-          $post->slug = Str::of($post->title)->slug('-');
+        $new_post->fill($data);
+          $new_post->slug = Str::of($new_post->title)->slug('-');
 
  
        
 
-          $post->save();
+          $new_post->save();
 
 
           if (isset($data['technologies'])){
-               $post->technologies()->sync($data['technologies']);
+               $new_post->technologies()->sync($data['technologies']);
 
           }
        
-         return redirect()->route('admin.posts.index')->with('message',"Post $post->title creato correttamente");
+         return redirect()->route('admin.posts.index')->with('message',"Post $new_post->id creato correttamente");
 
 
     }
@@ -118,6 +118,9 @@ class PostController extends Controller
 
          $data = $request->validated();
 
+ 
+         
+
 
         //  $post->title = $data['title'];
         //  $post->content = $data['content'];
@@ -125,14 +128,17 @@ class PostController extends Controller
 
          $post->save();
 
+         
+               $post->technologies()->sync($data['technologies']);
 
-        //  $post->slug = Str::of($data['title'])->slug('-');
+   
 
-         // $post->title = $data['title'];
-         // $post->content = $data['content'];
-         // $post->save();
+
+
          $post->update($data);
 
+
+         
          return redirect()->route('admin.posts.index')->with('message', "Post $post->id aggiornato correttamente");
 
     }
