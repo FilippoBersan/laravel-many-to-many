@@ -49,23 +49,19 @@ class PostController extends Controller
      */
     public function store(StorePostRequest $request)
     {
-
-        // dd($request->all());
-        //
-
-
-        $data = $request->validated();
+         // dd($request->all());
+         $data = $request->validated();
 
 
 
         $post = new Post();
-        
-        
-        
-        $post->title = $data['title'];
-         $post->content = $data['content'];
+
+        //  $post->title = $data['title'];
+        //  $post->content = $data['content'];
+        $post->fill($data);
           $post->slug = Str::of($post->title)->slug('-');
 
+ 
        
 
           $post->save();
@@ -76,9 +72,7 @@ class PostController extends Controller
 
           }
        
-
-
-          return redirect()->route('admin.posts.index')->with('message',"Post $post->title creato correttamente");
+         return redirect()->route('admin.posts.index')->with('message',"Post $post->title creato correttamente");
 
 
     }

@@ -10,7 +10,7 @@
      <h1>{{ $post->title }}</h1>
      <p>{{ $post->content }}</p>
      <div>
-  <h1>Categoria: {{$post->type?->title ?: 'Nessuna categoria'}}</h1>
+  <h1>Categoria: {{$post->type?->title}}</h1>
 
   <div>
     Tecnologie:
