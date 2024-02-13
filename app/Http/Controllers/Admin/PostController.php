@@ -20,6 +20,7 @@ class PostController extends Controller
         //
         $posts= Post::all();
 
+        
 
 
 
@@ -111,7 +112,7 @@ class PostController extends Controller
 
         //
     
-           return view('admin.posts.edit', compact('post','technologies'));
+           return view('admin.posts.edit', compact('post','types','technologies'));
     }
 
     /**
@@ -131,7 +132,7 @@ class PostController extends Controller
          $post->save();
 
 
-         $post->slug = Str::of($data['title'])->slug('-');
+        //  $post->slug = Str::of($data['title'])->slug('-');
 
          // $post->title = $data['title'];
          // $post->content = $data['content'];

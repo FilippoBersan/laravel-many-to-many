@@ -33,21 +33,25 @@
 
    </div>
 
+
+
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Contenuto</label>
-    <textarea type="text"  class="form-control" name="content" id="content" value="{{old('content', $post->content)}}" required ></textarea> </textarea>
+    <textarea type="text"  class="form-control" name="content" value="" required > {{old('content', $post->content)}}</textarea>
   </div>
 
- <div class="mb-3">
+<div class="mb-3">
   <label for="">Tipo </label>
   <select class="form-select" aria-label="Default select example" name="type_id">
   <option selected>Open this select menu</option>
-{{-- @foreach ($types as $type)
+@foreach ($types as $type)
   <option value="{{ $type->id }}">{{ $type->title }}</option>
- @endforeach --}}
+ @endforeach
 
 </select>
 </div>
+
+
 
 
 <div class="mb-3">

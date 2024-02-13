@@ -34,7 +34,7 @@
 
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Contenuto</label>
-    <textarea type="text"  class="form-control" name="content"value="{{old('content')}}" ></textarea> </textarea>
+    <textarea type="text"  class="form-control" name="content" >{{old('content')}}</textarea> 
   </div>
   
 
